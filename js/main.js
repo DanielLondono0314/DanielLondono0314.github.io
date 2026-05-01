@@ -140,23 +140,30 @@ function createProjectCard(project) {
 
   const tagsHtml = project.tags.map(t => `<span class="project-tag">${t}</span>`).join('');
 
-  card.innerHTML = `
-    <div class="project-visual" style="background: linear-gradient(135deg, ${project.accentColor}cc, ${project.accentColor}55);">
-      ${project.name}
-    </div>
+  const previewBlock = project.liveUrl ? `
     <div class="project-preview" id="preview-${project.id}">
       <div class="preview-toolbar">
         <a href="${project.liveUrl}" target="_blank" rel="noopener" class="btn btn--outline btn--sm">↗ Abrir</a>
         <button class="btn btn--outline btn--sm" onclick="togglePreview('${project.id}')">✕ Cerrar</button>
       </div>
       <div class="preview-skeleton" id="skeleton-${project.id}"></div>
+    </div>` : '';
+
+  const previewBtn = project.liveUrl
+    ? `<button class="btn btn--primary btn--sm" onclick="togglePreview('${project.id}', '${project.liveUrl}')">▶ Live Preview</button>`
+    : '';
+
+  card.innerHTML = `
+    <div class="project-visual" style="background: linear-gradient(135deg, ${project.accentColor}cc, ${project.accentColor}55);">
+      ${project.name}
     </div>
+    ${previewBlock}
     <div class="project-body">
       <h3 class="project-name">${project.name}</h3>
       <p class="project-desc">${project.description}</p>
       <div class="project-tags">${tagsHtml}</div>
       <div class="project-actions">
-        <button class="btn btn--primary btn--sm" onclick="togglePreview('${project.id}', '${project.liveUrl}')">▶ Live Preview</button>
+        ${previewBtn}
         <a href="${project.repoUrl}" target="_blank" rel="noopener" class="btn btn--outline btn--sm">⬡ GitHub</a>
       </div>
     </div>
