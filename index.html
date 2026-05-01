@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daniel Londoño — Vibecoder & AI App Builder</title>
+  <meta name="description" content="Portfolio de Daniel Londoño, Vibecoder y AI App Builder desde Medellín, Colombia." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
+  <meta property="og:title" content="Daniel Londoño — Vibecoder & AI App Builder" />
+  <meta property="og:description" content="Portfolio de Daniel Londoño, Vibecoder y AI App Builder desde Medellín, Colombia." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://daniellondono0314.github.io" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="nav-wrapper">
+    <nav class="nav-pill">
+      <a href="#hero" class="nav-link active">Home</a>
+      <a href="#projects" class="nav-link">Proyectos</a>
+      <a href="#skills" class="nav-link">Skills</a>
+      <a href="#education" class="nav-link">Educación</a>
+      <a href="#contact" class="nav-link">Contacto</a>
+    </nav>
+    <button class="nav-hamburger" aria-label="Menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- MOBILE DRAWER -->
+  <div class="nav-drawer" aria-hidden="true">
+    <a href="#hero" class="drawer-link">Home</a>
+    <a href="#projects" class="drawer-link">Proyectos</a>
+    <a href="#skills" class="drawer-link">Skills</a>
+    <a href="#education" class="drawer-link">Educación</a>
+    <a href="#contact" class="drawer-link">Contacto</a>
+  </div>
+
+  <main>
+
+    <!-- HERO -->
+    <section id="hero" class="section hero">
+      <div class="hero-text">
+        <p class="hero-greeting">Hola, soy</p>
+        <h1 class="hero-name">Daniel Londoño</h1>
+        <p class="hero-role">
+          <span class="typewriter" id="typewriter"></span>
+          <span class="typewriter-cursor">|</span>
+        </p>
+        <p class="hero-bio">Construyo productos digitales con IA desde Medellín, Colombia.</p>
+        <div class="hero-badges">
+          <span class="badge">📍 Medellín, Colombia</span>
+          <span class="badge badge--green">🟢 Open to work</span>
+        </div>
+        <div class="hero-cta">
+          <a href="#projects" class="btn btn--primary">Ver proyectos ↓</a>
+          <a href="https://www.linkedin.com/in/daniel-londono-perez/" target="_blank" rel="noopener" class="btn btn--outline">LinkedIn ↗</a>
+        </div>
+      </div>
+      <div class="hero-photo-wrapper">
+        <img src="assets/photo.jpg" alt="Daniel Londoño" class="hero-photo" loading="eager" />
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section about">
+      <div class="about-stats">
+        <div class="stat-card">
+          <span class="stat-number">3</span>
+          <span class="stat-label">Proyectos publicados</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">2</span>
+          <span class="stat-label">Idiomas</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">2025</span>
+          <span class="stat-label">Building since</span>
+        </div>
+      </div>
+      <p class="about-bio">
+        Soy Daniel, vibecoder y AI App Builder desde Medellín. Construyo productos digitales reales
+        usando IA como herramienta principal — Lovable, Claude y React son mi stack.
+        Cada proyecto que ves aquí resuelve un problema concreto.
+      </p>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section projects">
+      <p class="section-label">PORTFOLIO</p>
+      <h2 class="section-title">Proyectos <span class="gradient-text">Destacados</span></h2>
+      <p class="section-subtitle">Apps reales, resolviendo problemas reales.</p>
+      <div class="projects-grid" id="projects-grid">
+        <!-- JS inserts cards here -->
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section skills">
+      <p class="section-label">HABILIDADES</p>
+      <h2 class="section-title">Mi <span class="gradient-text">Stack</span></h2>
+      <div class="skills-groups" id="skills-groups">
+        <!-- JS inserts skill groups here -->
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="section education">
+      <p class="section-label">FORMACIÓN</p>
+      <h2 class="section-title">Educación &amp; <span class="gradient-text">Certificaciones</span></h2>
+      <div class="edu-card">
+        <div class="edu-icon">🎓</div>
+        <div class="edu-info">
+          <h3 class="edu-name">Corporación Universitaria Remington</h3>
+          <p class="edu-detail">Ingeniería de Software · En curso · Medellín, Colombia</p>
+        </div>
+      </div>
+      <h3 class="certs-title">Certificaciones</h3>
+      <div class="certs-grid">
+        <div class="cert-chip">
+          <span class="cert-issuer">EF</span>
+          <span class="cert-name">EF SET English Certificate 70/100 (C1 Advanced)</span>
+        </div>
+        <div class="cert-chip">
+          <span class="cert-issuer">Platzi</span>
+          <span class="cert-name">Desarrollo de Aplicaciones con IA</span>
+          <span class="cert-date">oct. 2025</span>
+        </div>
+        <div class="cert-chip">
+          <span class="cert-issuer">Platzi</span>
+          <span class="cert-name">Desarrollo Frontend con React.js</span>
+          <span class="cert-date">oct. 2025</span>
+        </div>
+        <div class="cert-chip">
+          <span class="cert-issuer">Platzi</span>
+          <span class="cert-name">Curso de Desarrollo Avanzado con Lovable</span>
+          <span class="cert-date">oct. 2025</span>
+        </div>
+        <div class="cert-chip">
+          <span class="cert-issuer">Platzi</span>
+          <span class="cert-name">Inglés Avanzado C1</span>
+          <span class="cert-date">oct. 2025</span>
+        </div>
+        <div class="cert-chip">
+          <span class="cert-issuer">Platzi</span>
+          <span class="cert-name">Desarrollo Backend con Node.js</span>
+          <span class="cert-date">oct. 2025</span>
+        </div>
+        <div class="cert-chip">
+          <span class="cert-issuer">Platzi</span>
+          <span class="cert-name">HTML y CSS a Profundidad</span>
+          <span class="cert-date">abr. 2023</span>
+        </div>
+        <div class="cert-chip">
+          <span class="cert-issuer">Platzi</span>
+          <span class="cert-name">Curso Práctico de Frontend Developer</span>
+          <span class="cert-date">feb. 2023</span>
+        </div>
+        <div class="cert-chip">
+          <span class="cert-issuer">Platzi</span>
+          <span class="cert-name">Curso de Frontend Developer</span>
+          <span class="cert-date">feb. 2023</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section contact">
+      <h2 class="contact-title">¿Tienes un proyecto?</h2>
+      <p class="contact-sub">Hablemos.</p>
+      <div class="contact-links">
+        <a href="https://github.com/DanielLondono0314" target="_blank" rel="noopener" class="contact-link">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+        <a href="https://www.linkedin.com/in/daniel-londono-perez/" target="_blank" rel="noopener" class="contact-link">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <a href="mailto:dearloups@gmail.com" class="contact-link">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          Email
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>Daniel Londoño · Medellín, Colombia · 2026</p>
+    <p class="footer-sub">Hecho con Lovable + Claude ⚡</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
