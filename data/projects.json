@@ -1,0 +1,29 @@
+[
+  {
+    "id": "kennel-stride",
+    "name": "Kennel Stride",
+    "description": "CRM para manejo de centros caninos. Registro de clientes, seguimiento de mascotas y gestión de servicios.",
+    "liveUrl": "https://kennel-stride.lovable.app",
+    "repoUrl": "https://github.com/DanielLondono0314/kennel-stride",
+    "tags": ["React", "AI", "CRM", "Lovable"],
+    "accentColor": "#F97316"
+  },
+  {
+    "id": "danielytuperro",
+    "name": "DanielYTuPerro",
+    "description": "Plataforma de asesorías caninas con calendario, rutinas en video, chat directo, chat de voz y membresía paga.",
+    "liveUrl": "https://danielytuperro.lovable.app/",
+    "repoUrl": "https://github.com/DanielLondono0314/danielytuperro",
+    "tags": ["React", "AI", "SaaS", "Lovable"],
+    "accentColor": "#7C3AED"
+  },
+  {
+    "id": "boca2",
+    "name": "Boca2",
+    "description": "App para guardar recomendaciones de foodies de Instagram. Scraping de posts con IA, mapa interactivo de lugares.",
+    "liveUrl": "https://boca2.lovable.app/",
+    "repoUrl": "https://github.com/DanielLondono0314/boca2",
+    "tags": ["React", "AI", "Maps", "Scraping"],
+    "accentColor": "#EC4899"
+  }
+]

@@ -126,7 +126,7 @@ Construyo productos digitales con IA desde Medellín, Colombia.
 ```
 
 - "Daniel Londoño" en gradient text (`-webkit-background-clip: text`)
-- Subtítulo con efecto typewriter CSS que cicla entre: `"Vibecoder"` → `"AI App Builder"` → `"Software Developer"` → `"Dog Trainer"` (pausa 2s por frase)
+- Subtítulo con efecto typewriter CSS que cicla entre: `"Vibecoder"` → `"AI App Builder"` → `"Software Developer"` (pausa 2s por frase)
 - Badge pill: `📍 Medellín, Colombia` y `🟢 Open to work`
 
 **Foto:**
@@ -225,7 +225,7 @@ Cada certificación: chip con icono de Platzi/EF, nombre, fecha. Layout: `flexbo
 ¿Tienes un proyecto?
 Hablemos.
 
-[GitHub]  [LinkedIn]  [Email]
+[GitHub → https://github.com/DanielLondono0314]  [LinkedIn → https://www.linkedin.com/in/daniel-londono-perez/]  [Email → dearloups@gmail.com]
 ```
 
 **Footer:**
