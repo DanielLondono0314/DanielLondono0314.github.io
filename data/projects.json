@@ -30,7 +30,7 @@
     "id": "michael-cornell",
     "name": "Michael Cornell",
     "description": "Rediseño editorial premium de sitio personal para coach de negocios con 500+ alumnos. React 18 + Vite, SEO estructurado con 5 schemas, accesibilidad WCAG AA.",
-    "liveUrl": "",
+    "liveUrl": "https://daniellondono0314.github.io/michaelcornell/",
     "repoUrl": "https://github.com/DanielLondono0314/michaelcornell",
     "tags": ["React 18", "Vite", "SEO", "CSS Modules"],
     "accentColor": "#B8960C"
