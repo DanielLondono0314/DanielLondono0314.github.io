@@ -521,13 +521,43 @@ em { font-style: italic; }
   margin-bottom: 32px;
   font-family: 'JetBrains Mono', monospace;
 }
+/* ─── Desktop: fila única horizontal con scroll interno ─── */
 .projects-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-direction: row;
   gap: 16px;
+  overflow-x: auto;
+  overflow-y: visible;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: 8px;
+  /* Cursor grab para indicar que es arrastrable */
+  cursor: grab;
 }
-@media (max-width: 1023px) { .projects-grid { grid-template-columns: 1fr; } }
-@media (min-width: 1024px) and (max-width: 1300px) { .projects-grid { grid-template-columns: repeat(2, 1fr); } }
+.projects-grid::-webkit-scrollbar { display: none; }
+.projects-grid:active { cursor: grabbing; }
+
+.projects-grid .project-card {
+  flex: 0 0 clamp(260px, 26vw, 320px);
+  scroll-snap-align: start;
+}
+
+/* ─── Mobile: columna única normal ─── */
+@media (max-width: 1023px) {
+  .projects-grid {
+    flex-direction: column;
+    overflow-x: visible;
+    cursor: default;
+    padding-bottom: 0;
+  }
+  .projects-grid .project-card {
+    flex: none;
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+}
 
 .project-card {
   background: var(--surface);
@@ -817,24 +847,25 @@ em { font-style: italic; }
 
 /* ─── VERTICAL CONTENT FIXES (desktop) ─── */
 
-/* Panels con contenido largo (educación, proyectos) arrancan desde arriba
-   y hacen scroll interno en lugar de cortar el contenido */
+/* Panels con contenido largo arrancan desde arriba con scroll interno */
 @media (min-width: 1024px) {
-  .panel--education .panel__inner,
-  .panel--projects .panel__inner--wide {
+  .panel--education .panel__inner {
     justify-content: flex-start;
     padding-top: 48px;
   }
 
-  /* El panel de about también arranca desde arriba cuando la pantalla es baja */
   .panel--about .panel__inner {
     justify-content: flex-start;
     padding-top: 64px;
   }
 
-  /* Proyectos: 2 columnas en pantallas medianas para que las cards quepan sin scrollear */
+  /* Projects: fila horizontal, arranca desde arriba, sin overflow vertical */
   .panel--projects .panel__inner--wide {
-    padding-top: 40px;
+    justify-content: flex-start;
+    padding-top: 48px;
+    /* Dar espacio extra para que se vean 3 cards + peek de la 4ta */
+    min-width: 900px;
+    max-width: 1000px;
   }
 }
 

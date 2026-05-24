@@ -204,6 +204,27 @@ function createProjectCard(project) {
   return card;
 }
 
+function initProjectsGridDrag() {
+  const grid = document.getElementById('projects-grid');
+  if (!grid || window.innerWidth < 1024) return;
+  let startX = 0, startScroll = 0, dragging = false;
+  grid.addEventListener('mousedown', e => {
+    dragging = true;
+    startX = e.pageX;
+    startScroll = grid.scrollLeft;
+    grid.style.cursor = 'grabbing';
+    e.preventDefault();
+  });
+  document.addEventListener('mousemove', e => {
+    if (!dragging) return;
+    grid.scrollLeft = startScroll - (e.pageX - startX);
+  });
+  document.addEventListener('mouseup', () => {
+    dragging = false;
+    if (grid) grid.style.cursor = 'grab';
+  });
+}
+
 async function loadProjects() {
   const grid = document.getElementById('projects-grid');
   if (!grid) return;
@@ -211,6 +232,7 @@ async function loadProjects() {
     const res = await fetch('data/projects.json');
     const projects = await res.json();
     projects.forEach(project => grid.appendChild(createProjectCard(project)));
+    initProjectsGridDrag();
   } catch (err) {
     grid.innerHTML = '<p style="color:var(--muted);font-family:monospace;font-size:13px">Error cargando proyectos.</p>';
   }
