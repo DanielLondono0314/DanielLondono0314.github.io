@@ -515,11 +515,29 @@ em { font-style: italic; }
 }
 
 /* ─── PROJECTS ─── */
+.projects-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  gap: 16px;
+}
 .section-subtitle {
   font-size: 14px;
   color: var(--muted);
-  margin-bottom: 32px;
+  margin-bottom: 0;
   font-family: 'JetBrains Mono', monospace;
+}
+.projects-scroll-hint {
+  font-size: 11px;
+  color: var(--muted);
+  white-space: nowrap;
+  opacity: 0.7;
+}
+@media (max-width: 1023px) {
+  .projects-header { flex-direction: column; gap: 4px; }
+  .projects-scroll-hint { display: none; }
+  .section-subtitle { margin-bottom: 20px; }
 }
 /* ─── Desktop: fila única horizontal con scroll interno ─── */
 .projects-grid {
@@ -539,7 +557,7 @@ em { font-style: italic; }
 .projects-grid:active { cursor: grabbing; }
 
 .projects-grid .project-card {
-  flex: 0 0 clamp(260px, 26vw, 320px);
+  flex: 0 0 300px;
   scroll-snap-align: start;
 }
 
@@ -863,9 +881,20 @@ em { font-style: italic; }
   .panel--projects .panel__inner--wide {
     justify-content: flex-start;
     padding-top: 48px;
-    /* Dar espacio extra para que se vean 3 cards + peek de la 4ta */
-    min-width: 900px;
-    max-width: 1000px;
+    /* Ancho: caben 2.5 cards (300px × 2.5 + gaps ≈ 782px) → la 3ra se asoma → hint de scroll */
+    min-width: 820px;
+    max-width: 880px;
+    position: relative;
+  }
+  /* Fade gradient en el borde derecho: indica que hay más cards */
+  .panel--projects .panel__inner--wide::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: 80px;
+    background: linear-gradient(to right, transparent, var(--bg));
+    pointer-events: none;
+    z-index: 2;
   }
 }
 
