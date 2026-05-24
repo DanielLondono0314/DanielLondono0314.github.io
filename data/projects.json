@@ -34,5 +34,14 @@
     "repoUrl": "https://github.com/DanielLondono0314/michaelcornell",
     "tags": ["React 18", "Vite", "SEO", "CSS Modules"],
     "accentColor": "#B8960C"
+  },
+  {
+    "id": "danielytuperro-com",
+    "name": "danielytuperro.com",
+    "description": "Sitio web para emprendimiento canino. Ecommerce desde cero, integración Wompi, sistema de rifas con reservas/cancelaciones en tiempo real y manejo de inventario.",
+    "liveUrl": "https://danielytuperro.com/",
+    "repoUrl": "https://github.com/DanielLondono0314/danielytuperro",
+    "tags": ["React", "Wompi", "Ecommerce", "Rifas"],
+    "accentColor": "#10B981"
   }
 ]
