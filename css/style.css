@@ -515,59 +515,27 @@ em { font-style: italic; }
 }
 
 /* ─── PROJECTS ─── */
-.projects-header {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  margin-bottom: 20px;
-  gap: 16px;
-}
 .section-subtitle {
   font-size: 14px;
   color: var(--muted);
-  margin-bottom: 0;
+  margin-bottom: 32px;
   font-family: 'JetBrains Mono', monospace;
 }
-.projects-scroll-hint {
-  font-size: 11px;
-  color: var(--muted);
-  white-space: nowrap;
-  opacity: 0.7;
-}
-@media (max-width: 1023px) {
-  .projects-header { flex-direction: column; gap: 4px; }
-  .projects-scroll-hint { display: none; }
-  .section-subtitle { margin-bottom: 20px; }
-}
-/* ─── Desktop: fila única horizontal con scroll interno ─── */
+/* ─── Desktop: fila única, panel ancho para mostrar todos ─── */
 .projects-grid {
   display: flex;
   flex-direction: row;
   gap: 16px;
-  overflow-x: auto;
-  overflow-y: visible;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  padding-bottom: 8px;
-  /* Cursor grab para indicar que es arrastrable */
-  cursor: grab;
 }
-.projects-grid::-webkit-scrollbar { display: none; }
-.projects-grid:active { cursor: grabbing; }
 
 .projects-grid .project-card {
-  flex: 0 0 300px;
-  scroll-snap-align: start;
+  flex: 0 0 280px;
 }
 
 /* ─── Mobile: columna única normal ─── */
 @media (max-width: 1023px) {
   .projects-grid {
     flex-direction: column;
-    overflow-x: visible;
-    cursor: default;
-    padding-bottom: 0;
   }
   .projects-grid .project-card {
     flex: none;
@@ -877,24 +845,13 @@ em { font-style: italic; }
     padding-top: 64px;
   }
 
-  /* Projects: fila horizontal, arranca desde arriba, sin overflow vertical */
+  /* Projects: panel ancho que muestra los 5 proyectos sin scroll anidado */
+  /* 5 cards × 280px + 4 gaps × 16px + 2 × padding (52px) = 1568px */
   .panel--projects .panel__inner--wide {
     justify-content: flex-start;
     padding-top: 48px;
-    /* Ancho: caben 2.5 cards (300px × 2.5 + gaps ≈ 782px) → la 3ra se asoma → hint de scroll */
-    min-width: 820px;
-    max-width: 880px;
-    position: relative;
-  }
-  /* Fade gradient en el borde derecho: indica que hay más cards */
-  .panel--projects .panel__inner--wide::after {
-    content: '';
-    position: absolute;
-    top: 0; right: 0; bottom: 0;
-    width: 80px;
-    background: linear-gradient(to right, transparent, var(--bg));
-    pointer-events: none;
-    z-index: 2;
+    min-width: 1560px;
+    max-width: 1600px;
   }
 }
 
