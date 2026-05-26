@@ -3,6 +3,162 @@
    Vibe Logic Light redesign
 ═══════════════════════════════════════════ */
 
+/* ─── I18N ─── */
+const TRANSLATIONS = {
+  es: {
+    'nav.projects':      'Proyectos',
+    'nav.education':     'Educación',
+    'nav.contact':       'Contacto',
+    'hero.status':       'STATUS: BUILDING_THE_FUTURE',
+    'hero.bio':          'Construyo productos digitales con IA desde Medellín, Colombia.',
+    'hero.badge':        '🟢 Disponible',
+    'hero.cta1':         'Ver proyectos →',
+    'about.title':       'Quién<br>soy.',
+    'about.bio':         'Soy Daniel, vibecoder y AI App Builder desde Medellín. Construyo productos digitales reales usando IA como herramienta principal — Lovable, Claude y React son mi stack. Cada proyecto que ves aquí resuelve un problema concreto.',
+    'about.stat1':       'Proyectos publicados',
+    'about.stat2':       'Idiomas',
+    'projects.title':    'Proyectos<br><em>Destacados.</em>',
+    'projects.subtitle': 'Apps reales, resolviendo problemas reales.',
+    'skills.label':      'HABILIDADES',
+    'skills.title':      'Mi<br>Stack.',
+    'skills.tools':      'Herramientas',
+    'skills.abilities':  'Capacidades',
+    'skills.languages':  'Idiomas',
+    'edu.label':         'FORMACIÓN',
+    'edu.title':         'Educación &amp;<br><em>Certs.</em>',
+    'edu.degree':        'Ingeniería de Software · En curso · Medellín',
+    'edu.certs':         'CERTIFICACIONES',
+    'contact.label':     'CONTACTO',
+    'contact.title':     '¿Tienes un<br>proyecto?',
+    'contact.sub':       'Hablemos.',
+    'project.live':      '▶ Live Preview',
+    'project.github':    '⬡ GitHub',
+    'project.open':      '↗ Abrir',
+    'project.close':     '✕ Cerrar',
+    'project.fallback':  'Esta app no permite previsualización embebida.',
+    'project.openapp':   'Abrir app ↗',
+  },
+  en: {
+    'nav.projects':      'Projects',
+    'nav.education':     'Education',
+    'nav.contact':       'Contact',
+    'hero.status':       'STATUS: BUILDING_THE_FUTURE',
+    'hero.bio':          'I build digital products with AI from Medellín, Colombia.',
+    'hero.badge':        '🟢 Open to work',
+    'hero.cta1':         'View projects →',
+    'about.title':       'Who<br>I am.',
+    'about.bio':         "I'm Daniel, a vibecoder and AI App Builder from Medellín. I build real digital products using AI as my main tool — Lovable, Claude and React are my stack. Every project you see here solves a concrete problem.",
+    'about.stat1':       'Published projects',
+    'about.stat2':       'Languages',
+    'projects.title':    'Featured<br><em>Projects.</em>',
+    'projects.subtitle': 'Real apps, solving real problems.',
+    'skills.label':      'SKILLS',
+    'skills.title':      'My<br>Stack.',
+    'skills.tools':      'Tools',
+    'skills.abilities':  'Capabilities',
+    'skills.languages':  'Languages',
+    'edu.label':         'EDUCATION',
+    'edu.title':         'Education &amp;<br><em>Certs.</em>',
+    'edu.degree':        'Software Engineering · In progress · Medellín',
+    'edu.certs':         'CERTIFICATIONS',
+    'contact.label':     'CONTACT',
+    'contact.title':     'Got a<br>project?',
+    'contact.sub':       "Let's talk.",
+    'project.live':      '▶ Live Preview',
+    'project.github':    '⬡ GitHub',
+    'project.open':      '↗ Open',
+    'project.close':     '✕ Close',
+    'project.fallback':  "This app doesn't allow embedded preview.",
+    'project.openapp':   'Open app ↗',
+  }
+};
+
+const PROJECT_DESCRIPTIONS = {
+  es: {
+    'kennel-stride':      'CRM para manejo de centros caninos. Registro de clientes, seguimiento de mascotas y gestión de servicios.',
+    'danielytuperro':     'Plataforma de asesorías caninas con calendario, rutinas en video, chat directo, chat de voz y membresía paga.',
+    'boca2':              'App para guardar recomendaciones de foodies de Instagram. Scraping de posts con IA, mapa interactivo de lugares.',
+    'michael-cornell':    'Rediseño editorial premium de sitio personal para coach de negocios con 500+ alumnos. React 18 + Vite, SEO estructurado con 5 schemas, accesibilidad WCAG AA.',
+    'danielytuperro-com': 'Sitio web para emprendimiento canino. Ecommerce desde cero, integración Wompi, sistema de rifas con reservas/cancelaciones en tiempo real y manejo de inventario.',
+  },
+  en: {
+    'kennel-stride':      'CRM for dog kennel management. Client registration, pet tracking and service management.',
+    'danielytuperro':     'Canine coaching platform with calendar, video routines, direct chat, voice chat and paid membership.',
+    'boca2':              'App to save foodie recommendations from Instagram. AI-powered post scraping, interactive map of places.',
+    'michael-cornell':    'Premium editorial redesign for a business coach with 500+ students. React 18 + Vite, structured SEO with 5 schemas, WCAG AA accessibility.',
+    'danielytuperro-com': 'Website for a canine entrepreneurship. E-commerce from scratch, Wompi integration, raffle system with real-time reservations/cancellations and inventory management.',
+  }
+};
+
+let currentLang = 'es';
+
+function detectLang() {
+  const saved = localStorage.getItem('dl-lang');
+  if (saved) return saved;
+  const browser = (navigator.language || navigator.userLanguage || 'es').toLowerCase();
+  return browser.startsWith('en') ? 'en' : 'es';
+}
+
+function t(key) {
+  return TRANSLATIONS[currentLang][key] || TRANSLATIONS['es'][key] || key;
+}
+
+function applyLang(lang) {
+  currentLang = lang;
+  localStorage.setItem('dl-lang', lang);
+  document.documentElement.lang = lang;
+
+  // Translate static data-i18n elements
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    const val = TRANSLATIONS[lang][key];
+    if (val !== undefined) el.innerHTML = val;
+  });
+
+  // Update project descriptions dynamically
+  document.querySelectorAll('.project-card').forEach(card => {
+    const id = card.dataset.id;
+    const desc = PROJECT_DESCRIPTIONS[lang]?.[id];
+    if (desc) {
+      const descEl = card.querySelector('.project-desc');
+      if (descEl) descEl.textContent = desc;
+    }
+    // Update button labels
+    const liveBtn = card.querySelector('.btn--acid');
+    if (liveBtn) liveBtn.textContent = t('project.live');
+    const ghBtn = card.querySelector('.btn--outline[href*="github"]');
+    if (ghBtn) ghBtn.innerHTML = `${t('project.github')}`;
+  });
+
+  // Update skill group titles
+  const skillGroups = document.querySelectorAll('.skill-group-title');
+  const groupKeys = ['skills.tools', 'skills.abilities', 'skills.languages'];
+  skillGroups.forEach((el, i) => {
+    if (groupKeys[i]) el.textContent = t(groupKeys[i]);
+  });
+
+  // Update toggle buttons
+  const label = lang === 'en' ? 'ES' : 'EN';
+  document.querySelectorAll('#lang-toggle, #lang-toggle-mobile').forEach(btn => {
+    btn.textContent = label;
+    btn.title = lang === 'en' ? 'Cambiar a español' : 'Switch to English';
+  });
+
+  // Re-init typewriter with correct language
+  initTypewriter();
+}
+
+function initLangToggle() {
+  currentLang = detectLang();
+  applyLang(currentLang);
+
+  document.querySelectorAll('#lang-toggle, #lang-toggle-mobile').forEach(btn => {
+    btn.addEventListener('click', () => {
+      applyLang(currentLang === 'es' ? 'en' : 'es');
+    });
+  });
+}
+
 /* ─── HORIZONTAL SCROLL (desktop only) ─── */
 function initHorizontalScroll() {
   if (window.innerWidth < 1024) return;
@@ -112,18 +268,22 @@ function initHamburger() {
 }
 
 /* ─── TYPEWRITER ─── */
+let _twTimer = null;
 function initTypewriter() {
   const el = document.getElementById('typewriter');
   if (!el) return;
+  if (_twTimer) clearTimeout(_twTimer);
+  // Roles are the same in both languages (technical terms)
   const roles = ['Vibecoder', 'AI App Builder', 'Software Developer'];
   let roleIndex = 0, charIndex = 0, deleting = false;
+  el.textContent = '';
   function tick() {
     const current = roles[roleIndex];
     el.textContent = deleting ? current.slice(0, --charIndex) : current.slice(0, ++charIndex);
     let delay = deleting ? 60 : 100;
     if (!deleting && charIndex === current.length) { delay = 2000; deleting = true; }
     else if (deleting && charIndex === 0) { deleting = false; roleIndex = (roleIndex + 1) % roles.length; delay = 400; }
-    setTimeout(tick, delay);
+    _twTimer = setTimeout(tick, delay);
   }
   tick();
 }
@@ -282,7 +442,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavHighlight();
   initNavClick();
   initHamburger();
-  initTypewriter();
-  loadProjects();
+  loadProjects().then(() => {
+    initLangToggle(); // apply lang after projects are rendered
+  });
   initSkillBars();
 });

@@ -174,6 +174,33 @@ em { font-style: italic; }
   border-radius: 0 2px 2px 0;
 }
 
+/* ─── LANG TOGGLE ─── */
+.lang-toggle {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  background: transparent;
+  border: 1px solid var(--muted);
+  color: var(--muted);
+  border-radius: var(--radius);
+  padding: 4px 7px;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition), border-color var(--transition);
+  margin-bottom: 12px;
+}
+.lang-toggle:hover,
+.lang-toggle.active {
+  background: var(--acid);
+  color: var(--navy);
+  border-color: var(--navy);
+}
+.lang-toggle--mobile {
+  margin-bottom: 0;
+  font-size: 10px;
+  padding: 4px 8px;
+}
+
 .nav-vertical__scroll-hint {
   font-family: 'JetBrains Mono', monospace;
   font-size: 9px;
@@ -205,6 +232,11 @@ em { font-style: italic; }
 .nav-mobile__links {
   display: flex;
   gap: 4px;
+}
+.nav-mobile__right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 .nav-mlink {
   font-family: 'JetBrains Mono', monospace;

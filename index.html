@@ -31,7 +31,7 @@
       </a>
       <a href="#projects" class="nav-vlink" data-label="Proyectos">
         <span class="nav-vlink__dot"></span>
-        <span class="nav-vlink__label">Proyectos</span>
+        <span class="nav-vlink__label" data-i18n="nav.projects">Proyectos</span>
       </a>
       <a href="#skills" class="nav-vlink" data-label="Skills">
         <span class="nav-vlink__dot"></span>
@@ -39,13 +39,14 @@
       </a>
       <a href="#education" class="nav-vlink" data-label="Educación">
         <span class="nav-vlink__dot"></span>
-        <span class="nav-vlink__label">Educación</span>
+        <span class="nav-vlink__label" data-i18n="nav.education">Educación</span>
       </a>
       <a href="#contact" class="nav-vlink" data-label="Contacto">
         <span class="nav-vlink__dot"></span>
-        <span class="nav-vlink__label">Contacto</span>
+        <span class="nav-vlink__label" data-i18n="nav.contact">Contacto</span>
       </a>
     </div>
+    <button class="lang-toggle" id="lang-toggle" aria-label="Switch language">EN</button>
     <div class="nav-vertical__scroll-hint">
       <span class="mono">scroll →</span>
     </div>
@@ -56,23 +57,26 @@
     <span class="nav-mobile__logo mono">DL</span>
     <div class="nav-mobile__links">
       <a href="#hero" class="nav-mlink active">Home</a>
-      <a href="#projects" class="nav-mlink">Proyectos</a>
+      <a href="#projects" class="nav-mlink" data-i18n="nav.projects">Proyectos</a>
       <a href="#skills" class="nav-mlink">Skills</a>
-      <a href="#contact" class="nav-mlink">Contacto</a>
+      <a href="#contact" class="nav-mlink" data-i18n="nav.contact">Contacto</a>
     </div>
-    <button class="nav-hamburger" aria-label="Menú" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
+    <div class="nav-mobile__right">
+      <button class="lang-toggle lang-toggle--mobile" id="lang-toggle-mobile" aria-label="Switch language">EN</button>
+      <button class="nav-hamburger" aria-label="Menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </header>
 
   <!-- MOBILE DRAWER -->
   <div class="nav-drawer" aria-hidden="true">
     <a href="#hero" class="drawer-link">Home</a>
     <a href="#about" class="drawer-link">About</a>
-    <a href="#projects" class="drawer-link">Proyectos</a>
+    <a href="#projects" class="drawer-link" data-i18n="nav.projects">Proyectos</a>
     <a href="#skills" class="drawer-link">Skills</a>
-    <a href="#education" class="drawer-link">Educación</a>
-    <a href="#contact" class="drawer-link">Contacto</a>
+    <a href="#education" class="drawer-link" data-i18n="nav.education">Educación</a>
+    <a href="#contact" class="drawer-link" data-i18n="nav.contact">Contacto</a>
   </div>
 
   <!-- HORIZONTAL SCROLL TRACK (desktop) / Normal flow (mobile) -->
@@ -81,19 +85,19 @@
     <!-- HERO -->
     <section id="hero" class="panel panel--hero">
       <div class="panel__inner">
-        <span class="mono label-tag">STATUS: BUILDING_THE_FUTURE</span>
+        <span class="mono label-tag" data-i18n="hero.status">STATUS: BUILDING_THE_FUTURE</span>
         <h1 class="hero-name">Daniel<br>Londoño</h1>
         <p class="hero-role">
           <span class="typewriter" id="typewriter"></span>
           <span class="typewriter-cursor">_</span>
         </p>
-        <p class="hero-bio">Construyo productos digitales con IA desde Medellín, Colombia.</p>
+        <p class="hero-bio" data-i18n="hero.bio">Construyo productos digitales con IA desde Medellín, Colombia.</p>
         <div class="hero-badges">
           <span class="badge-tag">📍 Medellín</span>
-          <span class="badge-tag badge-tag--green">🟢 Open to work</span>
+          <span class="badge-tag badge-tag--green" data-i18n="hero.badge">🟢 Open to work</span>
         </div>
         <div class="hero-cta">
-          <a href="#projects" class="btn btn--acid">Ver proyectos →</a>
+          <a href="#projects" class="btn btn--acid" data-i18n="hero.cta1">Ver proyectos →</a>
           <a href="https://www.linkedin.com/in/daniel-londono-perez/" target="_blank" rel="noopener" class="btn btn--outline">LinkedIn ↗</a>
         </div>
       </div>
@@ -108,8 +112,8 @@
     <section id="about" class="panel panel--about">
       <div class="panel__inner">
         <span class="mono label-tag">ABOUT</span>
-        <h2 class="panel-title">Quién<br>soy.</h2>
-        <p class="about-bio">
+        <h2 class="panel-title" data-i18n="about.title">Quién<br>soy.</h2>
+        <p class="about-bio" data-i18n="about.bio">
           Soy Daniel, vibecoder y AI App Builder desde Medellín. Construyo productos digitales reales
           usando IA como herramienta principal — Lovable, Claude y React son mi stack.
           Cada proyecto que ves aquí resuelve un problema concreto.
@@ -117,11 +121,11 @@
         <div class="about-stats">
           <div class="stat-card">
             <span class="stat-number">5</span>
-            <span class="stat-label">Proyectos publicados</span>
+            <span class="stat-label" data-i18n="about.stat1">Proyectos publicados</span>
           </div>
           <div class="stat-card">
             <span class="stat-number">2</span>
-            <span class="stat-label">Idiomas</span>
+            <span class="stat-label" data-i18n="about.stat2">Idiomas</span>
           </div>
           <div class="stat-card">
             <span class="stat-number">2025</span>
@@ -135,8 +139,8 @@
     <section id="projects" class="panel panel--projects">
       <div class="panel__inner panel__inner--wide">
         <span class="mono label-tag">PORTFOLIO</span>
-        <h2 class="panel-title">Proyectos<br><em>Destacados.</em></h2>
-        <p class="section-subtitle">Apps reales, resolviendo problemas reales.</p>
+        <h2 class="panel-title" data-i18n="projects.title">Proyectos<br><em>Destacados.</em></h2>
+        <p class="section-subtitle" data-i18n="projects.subtitle">Apps reales, resolviendo problemas reales.</p>
         <div class="projects-grid" id="projects-grid"></div>
       </div>
     </section>
@@ -144,8 +148,8 @@
     <!-- SKILLS -->
     <section id="skills" class="panel panel--skills">
       <div class="panel__inner">
-        <span class="mono label-tag">HABILIDADES</span>
-        <h2 class="panel-title">Mi<br>Stack.</h2>
+        <span class="mono label-tag" data-i18n="skills.label">HABILIDADES</span>
+        <h2 class="panel-title" data-i18n="skills.title">Mi<br>Stack.</h2>
         <div class="skills-groups" id="skills-groups"></div>
       </div>
     </section>
@@ -153,16 +157,16 @@
     <!-- EDUCATION -->
     <section id="education" class="panel panel--education">
       <div class="panel__inner">
-        <span class="mono label-tag">FORMACIÓN</span>
-        <h2 class="panel-title">Educación &amp;<br><em>Certs.</em></h2>
+        <span class="mono label-tag" data-i18n="edu.label">FORMACIÓN</span>
+        <h2 class="panel-title" data-i18n="edu.title">Educación &amp;<br><em>Certs.</em></h2>
         <div class="edu-card">
           <div class="edu-icon">🎓</div>
           <div class="edu-info">
             <h3 class="edu-name">Corporación Universitaria Remington</h3>
-            <p class="edu-detail mono">Ingeniería de Software · En curso · Medellín</p>
+            <p class="edu-detail mono" data-i18n="edu.degree">Ingeniería de Software · En curso · Medellín</p>
           </div>
         </div>
-        <h3 class="certs-title mono">CERTIFICACIONES</h3>
+        <h3 class="certs-title mono" data-i18n="edu.certs">CERTIFICACIONES</h3>
         <div class="certs-grid">
           <div class="cert-chip"><span class="cert-issuer">EF</span><span class="cert-name">EF SET English Certificate 70/100 (C1 Advanced)</span></div>
           <div class="cert-chip"><span class="cert-issuer">Platzi</span><span class="cert-name">Desarrollo de Aplicaciones con IA</span><span class="cert-date">oct. 2025</span></div>
@@ -180,9 +184,9 @@
     <!-- CONTACT -->
     <section id="contact" class="panel panel--contact">
       <div class="panel__inner">
-        <span class="mono label-tag">CONTACTO</span>
-        <h2 class="contact-title">¿Tienes un<br>proyecto?</h2>
-        <p class="contact-sub">Hablemos.</p>
+        <span class="mono label-tag" data-i18n="contact.label">CONTACTO</span>
+        <h2 class="contact-title" data-i18n="contact.title">¿Tienes un<br>proyecto?</h2>
+        <p class="contact-sub" data-i18n="contact.sub">Hablemos.</p>
         <div class="contact-links">
           <a href="https://github.com/DanielLondono0314" target="_blank" rel="noopener" class="contact-link">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
