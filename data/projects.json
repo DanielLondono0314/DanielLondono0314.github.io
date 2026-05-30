@@ -3,7 +3,7 @@
     "id": "kennel-stride",
     "name": "Kennel Stride",
     "description": "CRM para manejo de centros caninos. Registro de clientes, seguimiento de mascotas y gestión de servicios.",
-    "liveUrl": "https://kennel-stride.lovable.app",
+    "liveUrl": "https://kennel-stride.vercel.app/",
     "repoUrl": "https://github.com/DanielLondono0314/kennel-stride",
     "tags": ["React", "AI", "CRM", "Lovable"],
     "accentColor": "#F97316"
