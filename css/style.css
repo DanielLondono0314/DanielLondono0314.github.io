@@ -9,7 +9,7 @@
   --surface: #ffffff;
   --navy: #131b2e;
   --navy-light: #283044;
-  --muted: #757a60;
+  --muted: #696e55;
   --border: #131b2e;
   --acid: #d4ff00;
   --yellow: #f2e580;
@@ -22,6 +22,13 @@
 /* ─── RESET ─── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html, #main-track { scroll-behavior: auto !important; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
 body {
   font-family: 'Inter', sans-serif;
   font-size: 16px;
@@ -589,7 +596,8 @@ em { font-style: italic; }
   box-shadow: 6px 6px 0 var(--navy);
 }
 .project-visual {
-  height: 120px;
+  height: 150px;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -598,10 +606,25 @@ em { font-style: italic; }
   font-weight: 800;
   letter-spacing: -0.03em;
   color: var(--navy);
-  padding: 16px;
   text-align: center;
   border-bottom: 2px solid var(--navy);
+  overflow: hidden;
 }
+.project-screenshot {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  z-index: 1;
+  transition: transform 0.35s ease;
+}
+.project-card:hover .project-screenshot {
+  transform: scale(1.04);
+}
+/* Fallback name shows only when screenshot fails (img removed) */
+.project-visual__name { z-index: 0; padding: 16px; }
 .project-body { padding: 16px; }
 .project-name {
   font-family: 'Bricolage Grotesque', sans-serif;
@@ -703,30 +726,25 @@ em { font-style: italic; }
   padding-bottom: 8px;
   border-bottom: 1px solid var(--navy);
 }
-.skill-item { margin-bottom: 14px; }
-.skill-header {
+.skill-row {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 6px;
-  font-size: 13px;
-  font-weight: 500;
+  align-items: baseline;
+  gap: 16px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(19,27,46,0.12);
 }
-.skill-pct {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
+.skill-row:last-child { border-bottom: none; }
+.skill-row__name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--navy);
+}
+.skill-row__note {
+  font-size: 11px;
   color: var(--muted);
-}
-.skill-track {
-  height: 4px;
-  background: rgba(19,27,46,0.1);
-  border-radius: 0;
-  overflow: hidden;
-}
-.skill-fill {
-  height: 100%;
-  width: 0;
-  background: var(--navy);
-  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: right;
+  white-space: nowrap;
 }
 
 /* ─── EDUCATION ─── */

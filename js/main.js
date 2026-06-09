@@ -13,6 +13,8 @@ const TRANSLATIONS = {
     'hero.bio':          'Construyo productos digitales con IA desde Medellín, Colombia.',
     'hero.badge':        '🟢 Disponible',
     'hero.cta1':         'Ver proyectos →',
+    'hero.resume':       'Resume (EN) ↓',
+    'contact.resume':    'Resume (EN)',
     'about.title':       'Quién<br>soy.',
     'about.bio':         'Soy Daniel, vibecoder y AI App Builder desde Medellín. Construyo productos digitales reales usando IA como herramienta principal — Lovable, Claude y React son mi stack. Cada proyecto que ves aquí resuelve un problema concreto.',
     'about.stat1':       'Proyectos publicados',
@@ -46,6 +48,8 @@ const TRANSLATIONS = {
     'hero.bio':          'I build digital products with AI from Medellín, Colombia.',
     'hero.badge':        '🟢 Open to work',
     'hero.cta1':         'View projects →',
+    'hero.resume':       'Resume ↓',
+    'contact.resume':    'Resume',
     'about.title':       'Who<br>I am.',
     'about.bio':         "I'm Daniel, a vibecoder and AI App Builder from Medellín. I build real digital products using AI as my main tool — Lovable, Claude and React are my stack. Every project you see here solves a concrete problem.",
     'about.stat1':       'Published projects',
@@ -75,14 +79,14 @@ const TRANSLATIONS = {
 
 const PROJECT_DESCRIPTIONS = {
   es: {
-    'kennel-stride':      'CRM para manejo de centros caninos. Registro de clientes, seguimiento de mascotas y gestión de servicios.',
+    'kennel-stride':      'SaaS para centros de adiestramiento canino: reservas, historiales médicos, facturación y gestión de personal en una sola plataforma.',
     'danielytuperro':     'Plataforma de asesorías caninas con calendario, rutinas en video, chat directo, chat de voz y membresía paga.',
     'boca2':              'App para guardar recomendaciones de foodies de Instagram. Scraping de posts con IA, mapa interactivo de lugares.',
     'michael-cornell':    'Rediseño editorial premium de sitio personal para coach de negocios con 500+ alumnos. React 18 + Vite, SEO estructurado con 5 schemas, accesibilidad WCAG AA.',
     'danielytuperro-com': 'Sitio web para emprendimiento canino. Ecommerce desde cero, integración Wompi, sistema de rifas con reservas/cancelaciones en tiempo real y manejo de inventario.',
   },
   en: {
-    'kennel-stride':      'CRM for dog kennel management. Client registration, pet tracking and service management.',
+    'kennel-stride':      'SaaS for dog training centers: bookings, medical records, billing and staff management in one platform.',
     'danielytuperro':     'Canine coaching platform with calendar, video routines, direct chat, voice chat and paid membership.',
     'boca2':              'App to save foodie recommendations from Instagram. AI-powered post scraping, interactive map of places.',
     'michael-cornell':    'Premium editorial redesign for a business coach with 500+ students. React 18 + Vite, structured SEO with 5 schemas, WCAG AA accessibility.',
@@ -130,12 +134,8 @@ function applyLang(lang) {
     if (ghBtn) ghBtn.innerHTML = `${t('project.github')}`;
   });
 
-  // Update skill group titles
-  const skillGroups = document.querySelectorAll('.skill-group-title');
-  const groupKeys = ['skills.tools', 'skills.abilities', 'skills.languages'];
-  skillGroups.forEach((el, i) => {
-    if (groupKeys[i]) el.textContent = t(groupKeys[i]);
-  });
+  // Re-render skills in the active language
+  renderSkills(lang);
 
   // Update toggle buttons
   const label = lang === 'en' ? 'ES' : 'EN';
@@ -342,7 +342,9 @@ function createProjectCard(project) {
   const tagsHtml = project.tags.map(t => `<span class="project-tag">${t}</span>`).join('');
   card.innerHTML = `
     <div class="project-visual" style="background:${project.accentColor}22; border-bottom:2px solid ${project.accentColor};">
-      ${project.name}
+      <img src="assets/screenshots/${project.id}.jpg" alt="Screenshot de ${project.name}" loading="lazy"
+           onerror="this.remove()" class="project-screenshot" />
+      <span class="project-visual__name">${project.name}</span>
     </div>
     <div class="project-preview" id="preview-${project.id}">
       <div class="preview-toolbar">
@@ -377,63 +379,60 @@ async function loadProjects() {
 }
 
 /* ─── SKILLS ─── */
-const SKILLS = [
-  { group: 'Herramientas', items: [{ name: 'Lovable', pct: 90 }, { name: 'Claude AI', pct: 88 }, { name: 'React', pct: 75 }] },
-  { group: 'Capacidades', items: [{ name: 'Prompt Engineering', pct: 88 }, { name: 'Product Thinking', pct: 80 }] },
-  { group: 'Idiomas', items: [{ name: 'Español', pct: 100 }, { name: 'Inglés C1', pct: 85 }] },
-];
+const SKILLS = {
+  es: [
+    { group: 'Herramientas', items: [
+      { name: 'Lovable', note: '4 apps en producción' },
+      { name: 'Claude AI', note: 'desarrollo diario' },
+      { name: 'React', note: 'UI de cada proyecto' },
+    ]},
+    { group: 'Capacidades', items: [
+      { name: 'Prompt Engineering', note: 'de spec a producto' },
+      { name: 'Product Thinking', note: 'problema real primero' },
+      { name: 'Pagos & Ecommerce', note: 'Wompi en producción' },
+    ]},
+    { group: 'Idiomas', items: [
+      { name: 'Español', note: 'nativo' },
+      { name: 'Inglés', note: 'C1 · EF SET 70/100' },
+    ]},
+  ],
+  en: [
+    { group: 'Tools', items: [
+      { name: 'Lovable', note: '4 production apps' },
+      { name: 'Claude AI', note: 'daily driver' },
+      { name: 'React', note: 'UI on every project' },
+    ]},
+    { group: 'Capabilities', items: [
+      { name: 'Prompt Engineering', note: 'spec to product' },
+      { name: 'Product Thinking', note: 'real problem first' },
+      { name: 'Payments & Ecommerce', note: 'Wompi in production' },
+    ]},
+    { group: 'Languages', items: [
+      { name: 'Spanish', note: 'native' },
+      { name: 'English', note: 'C1 · EF SET 70/100' },
+    ]},
+  ],
+};
 
-function initSkillBars() {
+function renderSkills(lang) {
   const container = document.getElementById('skills-groups');
   if (!container) return;
-  SKILLS.forEach(group => {
+  container.innerHTML = '';
+  (SKILLS[lang] || SKILLS.es).forEach(group => {
     const groupEl = document.createElement('div');
     groupEl.className = 'skill-group';
     groupEl.innerHTML = `<p class="skill-group-title">${group.group}</p>`;
     group.items.forEach(skill => {
-      const item = document.createElement('div');
-      item.className = 'skill-item';
-      item.innerHTML = `
-        <div class="skill-header">
-          <span>${skill.name}</span>
-          <span class="skill-pct">${skill.pct}%</span>
-        </div>
-        <div class="skill-track"><div class="skill-fill" data-pct="${skill.pct}"></div></div>
+      const row = document.createElement('div');
+      row.className = 'skill-row';
+      row.innerHTML = `
+        <span class="skill-row__name">${skill.name}</span>
+        <span class="skill-row__note mono">${skill.note}</span>
       `;
-      groupEl.appendChild(item);
+      groupEl.appendChild(row);
     });
     container.appendChild(groupEl);
   });
-
-  const fills = container.querySelectorAll('.skill-fill');
-
-  if (window.innerWidth >= 1024) {
-    // Horizontal scroll: trigger when panel enters viewport horizontally
-    const track = document.getElementById('main-track');
-    const skillSection = document.getElementById('skills');
-    let fired = false;
-    if (track && skillSection) {
-      track.addEventListener('scroll', () => {
-        if (fired) return;
-        const rect = skillSection.getBoundingClientRect();
-        if (rect.left < window.innerWidth * 0.8) {
-          fired = true;
-          fills.forEach(f => { f.style.width = f.dataset.pct + '%'; });
-        }
-      });
-    }
-  } else {
-    // Vertical: Intersection Observer
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          fills.forEach(f => { f.style.width = f.dataset.pct + '%'; });
-          observer.disconnect();
-        }
-      });
-    }, { threshold: 0.2 });
-    observer.observe(container);
-  }
 }
 
 /* ─── INIT ─── */
@@ -443,7 +442,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavClick();
   initHamburger();
   loadProjects().then(() => {
-    initLangToggle(); // apply lang after projects are rendered
+    initLangToggle(); // apply lang after projects are rendered (also renders skills)
   });
-  initSkillBars();
 });

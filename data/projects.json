@@ -2,7 +2,7 @@
   {
     "id": "kennel-stride",
     "name": "Kennel Stride",
-    "description": "CRM para manejo de centros caninos. Registro de clientes, seguimiento de mascotas y gestión de servicios.",
+    "description": "SaaS para centros de adiestramiento canino: reservas, historiales médicos, facturación y gestión de personal en una sola plataforma.",
     "liveUrl": "https://kennel-stride.vercel.app/",
     "repoUrl": "https://github.com/DanielLondono0314/kennel-stride",
     "tags": ["React", "AI", "CRM", "Lovable"],
